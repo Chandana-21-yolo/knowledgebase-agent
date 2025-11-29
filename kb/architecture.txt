@@ -1,0 +1,14 @@
+Architecture overview:
+
+[User - Streamlit UI] <--> streamlit_app.py
+    - Upload docs -> saved to ./docs
+    - Click 'Ingest' -> runs ingest.py
+    - Ask questions -> agent.py handles retrieval + LLM call
+
+[ingest.py] -> loads PDFs/TXT -> splits into chunks -> embeddings -> Chroma (persist)
+
+[agent.py] -> loads Chroma, retrieves top-k, constructs prompt with context -> calls OpenRouter API for completion
+
+Deployment:
+- Streamlit Cloud (free): set secrets and deploy
+- For scale: use managed vector DB (Pinecone / Weaviate), and a hosted LLM provider
