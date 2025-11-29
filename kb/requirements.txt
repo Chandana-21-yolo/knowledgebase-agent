@@ -1,8 +1,8 @@
 streamlit
 langchain
-openai
 chromadb
 python-dotenv
-requests
 tqdm
 pypdf
+openai
+requests
